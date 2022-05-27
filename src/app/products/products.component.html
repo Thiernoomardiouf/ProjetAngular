@@ -1,0 +1,25 @@
+<div class="container">
+    <div class="card-header">
+        <div class="card-body">
+            <table class="table">
+                <thead>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Price</th>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let p of products">
+                        <td>{{p.id}}</td>
+                        <td>{{p.name}}</td>
+                        <td>{{p.price}}</td>
+                        <td>
+                            <button (click)="handleDeleteProduct(p)" class="btn btn-danger">
+                                <i class="bi bi-trash"></i>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
