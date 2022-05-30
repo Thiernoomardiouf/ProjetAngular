@@ -23,8 +23,22 @@ export class ProductsComponent implements OnInit {
     this.searchFormGroup=this.fb.group({
       keyword: this.fb.control(null)
     });
-    this.hundlegetAllProduits();
+    //this.hundlegetAllProduits();
+    this.hundlegetPageProduits();
 
+  }
+
+  hundlegetPageProduits(){
+    this.productService.getPageProducts(this.currentPage, this.pageSize).subscribe
+    ({
+     next : (data)=>{
+       this.products= data.products;
+       this.totalPages=data.totalPages;
+     },
+     error:(err)=>{
+       this.errorMessage= err;
+     }
+   });
   }
 
   hundlegetAllProduits(){
@@ -71,6 +85,11 @@ export class ProductsComponent implements OnInit {
         this.products=data;
       }
     })
+  }
+
+  gotoPage(i:number){
+    this.currentPage=i;
+    this.hundlegetPageProduits();
   }
 
 }
